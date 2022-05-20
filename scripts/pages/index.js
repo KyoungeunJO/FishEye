@@ -1,9 +1,6 @@
-    async function getPhotographers() {
-        // Penser à remplacer par les données récupérées dans le json
-        return fetch("data/photographers.json")
-            .then(data => data.json())
-    }
-
+    import getPhotographers from '../data.js'
+    import photographerFactory from '../factories/photographer.js'
+    
     async function displayData(photographers) {
         const photographersSection = document.querySelector(".photographer_section");
 
