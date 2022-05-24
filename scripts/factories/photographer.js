@@ -27,7 +27,37 @@ export default function photographerFactory(data) {
         article.appendChild(p);
         article.appendChild(p2);
         article.appendChild(p3);
+        
         return (a);
     }
-    return { name, picture, getUserCardDOM }
+
+    function getHeaderDOM() {
+        const parent = document.createElement( 'div' );
+        parent.classList.add('photograph-header');
+        const divInfo = document.createElement( 'div' );
+        const h1 = document.createElement( 'h1' );
+        h1.textContent = name;
+        const p = document.createElement( 'p' );
+        p.setAttribute("class", "location");
+        p.textContent = `${city}, ${country}`;
+        const p2 = document.createElement( 'p' );
+        p2.setAttribute("class", "tagline");
+        p2.textContent = tagline;
+        const button = document.createElement( 'button' );
+        button.addEventListener("click", displayModal);
+        button.classList.add("contact_button");
+        button.textContent = "Contactez-moi";
+        const img = document.createElement( 'img' );
+        img.setAttribute("src", picture)
+        img.setAttribute("alt", `Profile picture of ${name}`);
+        divInfo.appendChild(h1);
+        divInfo.appendChild(p);
+        divInfo.appendChild(p2);
+        parent.appendChild(divInfo);
+        parent.appendChild(button);
+        parent.appendChild(img);
+
+        return (parent);
+    }
+    return { name, picture, getUserCardDOM, getHeaderDOM }
 }

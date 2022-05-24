@@ -6,6 +6,17 @@
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.photograph-header img {
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    height: 200px;
+    width: 200px;
 }
 
 .contact_button {
