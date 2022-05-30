@@ -38,10 +38,10 @@ export default function photographerFactory(data) {
         const h1 = document.createElement( 'h1' );
         h1.textContent = name;
         const p = document.createElement( 'p' );
-        p.setAttribute("class", "location");
+        p.setAttribute("class", "location-photographer-header");
         p.textContent = `${city}, ${country}`;
         const p2 = document.createElement( 'p' );
-        p2.setAttribute("class", "tagline");
+        p2.setAttribute("class", "tagline-photographer-header");
         p2.textContent = tagline;
         const button = document.createElement( 'button' );
         button.addEventListener("click", displayModal);
