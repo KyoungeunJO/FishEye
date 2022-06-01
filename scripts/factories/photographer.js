@@ -59,5 +59,6 @@ export default function photographerFactory(data) {
 
         return (parent);
     }
+
     return { name, picture, getUserCardDOM, getHeaderDOM }
 }

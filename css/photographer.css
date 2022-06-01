@@ -1,3 +1,7 @@
+body {
+    padding: 0 100px;
+}
+
 #contact_modal {
     display: none;
     position: absolute;
@@ -21,15 +25,18 @@
     }
 }
 
+main {
+    margin-bottom: 50px;
+}
 
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
-    margin: 0 100px;
-    padding: 0 50px;
     display: flex;
+    gap: 30px;
     align-items: center;
     justify-content: space-between;
+    padding: 30px 50px;
 }
 
 .photograph-header h1 {
@@ -127,4 +134,19 @@ form input {
     height: 170px;
     border: none;
     border-radius: 5px;
+}
+
+#media {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+}
+
+article img, 
+article video
+ {
+    width: 100%;
+    aspect-ratio: 7/6;    
+    object-fit: cover;
 }

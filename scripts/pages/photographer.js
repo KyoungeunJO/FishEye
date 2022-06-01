@@ -1,5 +1,6 @@
 import getPhotographers from "../data.js";
 import photographerFactory from "../factories/photographer.js";
+import mediaFactory from "../factories/media.js";
 
 // get photographer's id from url
 let params = new URLSearchParams(document.location.search);
@@ -12,6 +13,13 @@ const photographer = await getPhotographers().then(data => data.photographers.fi
     }
 )[0])
 
+// Get photographer's media
+const media = await getPhotographers().then(data => data.media.filter(
+    media => {
+        return media.photographerId === photographer.id;
+    }
+))
+
 async function displayPhotographerHeader(photographer) {
     const photographerSection = document.querySelector("main")
     const photographerModel = photographerFactory(photographer)
@@ -19,5 +27,15 @@ async function displayPhotographerHeader(photographer) {
     photographerSection.appendChild(photographerHeaderDOM)
 }
 
-displayPhotographerHeader(photographer)
+async function displayMedia (mediaArray) {
+    const mediaSection = document.querySelector("#media")
+    
+    mediaArray.forEach(media => {
+        const mediaModel = mediaFactory(media)
+        const mediaDOM = mediaModel.getDOM()
+        mediaSection.appendChild(mediaDOM)
+    });
+}
 
+displayPhotographerHeader(photographer)
+displayMedia(media)
