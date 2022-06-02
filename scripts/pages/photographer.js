@@ -14,11 +14,20 @@ const photographer = await getPhotographers().then(data => data.photographers.fi
 )[0])
 
 // Get photographer's media
-const media = await getPhotographers().then(data => data.media.filter(
+const rawMedia = await getPhotographers().then(data => data.media.filter(
     media => {
         return media.photographerId === photographer.id;
     }
 ))
+
+function mapMedia(mediaArray) {
+    let medias = []
+    mediaArray.forEach(media => {
+        const mediaModel = mediaFactory(media)
+        medias.push(mediaModel)
+    })
+    return medias
+}
 
 async function displayPhotographerHeader(photographer) {
     const photographerSection = document.querySelector("main")
@@ -29,10 +38,10 @@ async function displayPhotographerHeader(photographer) {
 
 async function displayMedia (mediaArray) {
     const mediaSection = document.querySelector("#media")
+    mediaSection.innerHTML = ""
     
     mediaArray.forEach(media => {
-        const mediaModel = mediaFactory(media)
-        const mediaDOM = mediaModel.getDOM()
+        const mediaDOM = media.getDOM()
         mediaDOM.addEventListener('click', displayMediaModal)
         mediaSection.appendChild(mediaDOM)
     });
@@ -51,10 +60,31 @@ function closeMediaModal() {
     modal.style.display = "none"
 }
 
-displayPhotographerHeader(photographer)
-displayMedia(media)
-
 const closeBtn = document.querySelectorAll(".close-btn")
 closeBtn.forEach(btn => {
     btn.addEventListener('click', closeMediaModal)
 })
+
+const select = document.getElementById('select')
+select.addEventListener('change', e => {
+    const val = e.target.value
+    console.log(val)
+    // Trier les media contenus dans la variable media en fonction de la valeur sélectionnée
+
+    switch (val) {
+        case 'popularity':
+            media.sort((a, b) => {
+                return b.likes - a.likes
+            })
+            break;
+    
+        default:
+            break;
+    }
+    displayMedia(media)
+})
+
+// INIT
+displayPhotographerHeader(photographer)
+const media = mapMedia(rawMedia)
+displayMedia(media)
