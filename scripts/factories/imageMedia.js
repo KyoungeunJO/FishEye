@@ -14,10 +14,13 @@ export default function imageMediaFactory(data) {
         const p = document.createElement( 'p' );
         p.setAttribute("class", "likes");
         p.textContent = `${likes}`;
+        const i = document.createElement( 'i' );
+        i.setAttribute("class", "fa-solid fa-heart");
         article.appendChild(img);
         article.appendChild(divMediaInfo);
         divMediaInfo.appendChild(h2);
         divMediaInfo.appendChild(p);
+        divMediaInfo.appendChild(i);
         a.appendChild(article);
         
         return a;

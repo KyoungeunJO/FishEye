@@ -33,9 +33,28 @@ async function displayMedia (mediaArray) {
     mediaArray.forEach(media => {
         const mediaModel = mediaFactory(media)
         const mediaDOM = mediaModel.getDOM()
+        mediaDOM.addEventListener('click', displayMediaModal)
         mediaSection.appendChild(mediaDOM)
     });
 }
 
+function displayMediaModal() {
+    const modal = document.querySelector('#media-modal')
+    const curtain = document.querySelector('#curtain')
+
+    curtain.style.display = "block"
+    modal.style.display = "flex"
+}
+
+function closeMediaModal() {
+    const modal = document.querySelector('#media-modal')
+    modal.style.display = "none"
+}
+
 displayPhotographerHeader(photographer)
 displayMedia(media)
+
+const closeBtn = document.querySelectorAll(".close-btn")
+closeBtn.forEach(btn => {
+    btn.addEventListener('click', closeMediaModal)
+})

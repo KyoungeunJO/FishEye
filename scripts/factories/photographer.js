@@ -44,7 +44,7 @@ export default function photographerFactory(data) {
         p2.setAttribute("class", "tagline-photographer-header");
         p2.textContent = tagline;
         const button = document.createElement( 'button' );
-        button.addEventListener("click", displayModal);
+        button.addEventListener("click", () => displayModal(name));
         button.classList.add("contact_button");
         button.textContent = "Contactez-moi";
         const img = document.createElement( 'img' );

@@ -14,6 +14,10 @@ body {
     animation: appear 300ms ease-out;
 }
 
+#contact_modal[closing] {
+    animation: disappear 300ms;
+}
+
 @keyframes appear{ 
     from {
         opacity: 0;
@@ -22,6 +26,17 @@ body {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes disappear {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(100px);
     }
 }
 
@@ -143,10 +158,55 @@ form input {
     width: 100%;
 }
 
+#media a {
+    text-decoration: none;
+}
+
 article img, 
 article video
  {
     width: 100%;
     aspect-ratio: 7/6;    
     object-fit: cover;
+    border-radius: 5px;
+}
+
+#media-modal {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: absolute;
+    inset: 0;
+    z-index: 99;
+    margin: auto;
+    display: none;
+}
+
+.media-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #901C1C;
+}
+
+.media-info h2 {
+    margin-right: auto;
+}
+
+#mediaContainer {
+    width: 70%;
+    aspect-ratio: 7/6;
+    background-color: pink;
+}
+
+#curtain {
+    display: none;
+    background-color: black;
+    opacity: .6;
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 98;
 }
