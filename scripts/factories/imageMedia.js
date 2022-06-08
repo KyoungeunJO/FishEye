@@ -1,5 +1,7 @@
 export default function imageMediaFactory(data) {
-    const { photographerId, title, image, likes} = data;
+    let { photographerId, title, image, likes, date} = data;
+
+    date = new Date(date)
 
     function getDOM(){
         const a = document.createElement( 'a' );
@@ -15,7 +17,7 @@ export default function imageMediaFactory(data) {
         p.setAttribute("class", "likes");
         p.textContent = `${likes}`;
         const i = document.createElement( 'i' );
-        i.setAttribute("class", "fa-solid fa-heart");
+        i.setAttribute("class", "fas fa-heart");
         article.appendChild(img);
         article.appendChild(divMediaInfo);
         divMediaInfo.appendChild(h2);
@@ -26,5 +28,5 @@ export default function imageMediaFactory(data) {
         return a;
     }
 
-    return { title, image, likes, getDOM };
+    return { title, image, likes, date, getDOM };
 }

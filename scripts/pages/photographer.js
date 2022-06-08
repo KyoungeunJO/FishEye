@@ -65,26 +65,43 @@ closeBtn.forEach(btn => {
     btn.addEventListener('click', closeMediaModal)
 })
 
-const select = document.getElementById('select')
-select.addEventListener('change', e => {
-    const val = e.target.value
-    console.log(val)
-    // Trier les media contenus dans la variable media en fonction de la valeur sélectionnée
-
-    switch (val) {
+function sortMediaBy(value, medias) {
+    switch (value) {
         case 'popularity':
-            media.sort((a, b) => {
+            medias.sort((a, b) => {
                 return b.likes - a.likes
             })
             break;
-    
+
+        case 'title':
+            medias.sort((a, b) => {
+                return a.title.localeCompare(b.title)
+            })
+            break;
+            
+        case 'date':
+            medias.sort((a, b) => {
+                return b.date - a.date
+            })
+            break;
+
         default:
             break;
     }
+
+    return medias
+}
+
+const select = document.getElementById('select')
+select.addEventListener('change', e => {
+    const val = e.target.value
+    // Trier les media contenus dans la variable media en fonction de la valeur sélectionnée
+    media = sortMediaBy(val, media)
     displayMedia(media)
 })
 
 // INIT
 displayPhotographerHeader(photographer)
-const media = mapMedia(rawMedia)
+let media = mapMedia(rawMedia)
+media = sortMediaBy('popularity', media)
 displayMedia(media)
