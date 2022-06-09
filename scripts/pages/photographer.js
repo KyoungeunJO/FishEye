@@ -89,6 +89,7 @@ function displayMediaModal(event) {
     lightboxDOM.showModal()
 }
 
+
 function sortMediaBy(value, medias) {
     switch (value) {
         case 'popularity':
