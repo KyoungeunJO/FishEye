@@ -41,7 +41,7 @@ body {
 }
 
 main {
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 
 .photograph-header {
@@ -209,6 +209,23 @@ article video
     width: 100vw;
     height: 100vh;
     z-index: 98;
+}
+
+#label-select{
+    font-size: 18px;
+    font-weight: 700;
+    margin-right: 20px;
+}
+
+#select {
+    background-color: #901C1C;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 15px 30px 15px 15px;
+    border-radius: 5px;
+    border-color: transparent;
+    margin-bottom: 30px;
 }
 
 #info-like-price {
