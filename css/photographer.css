@@ -210,3 +210,15 @@ article video
     height: 100vh;
     z-index: 98;
 }
+
+#info-like-price {
+    position: fixed;
+    bottom: 0;
+    right: 35px;
+    display: flex;
+    gap: 30px;
+    padding: 15px;
+    background-color: #DB8876;
+    font-size: 24px;
+    color: black;
+}

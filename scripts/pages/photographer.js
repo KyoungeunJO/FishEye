@@ -2,6 +2,7 @@ import getPhotographers from "../data.js";
 import photographerFactory from "../factories/photographer.js";
 import mediaFactory from "../factories/media.js";
 
+// INIT
 // get photographer's id from url
 let params = new URLSearchParams(document.location.search);
 let id = parseInt(params.get('id'));
@@ -20,6 +21,33 @@ const rawMedia = await getPhotographers().then(data => data.media.filter(
     }
 ))
 
+displayPhotographerHeader(photographer)
+let media = mapMedia(rawMedia)
+media = sortMediaBy('popularity', media)
+displayMedia(media)
+
+// Set total likes and price in info div
+const price = `${photographer.price}€ / jour`
+const likes = media.reduce((acc, el) => acc + el.likes, 0)
+const infoPhotographerFooter = document.getElementById('info-like-price')
+infoPhotographerFooter.innerHTML = `
+<span>${likes}
+    <i class="fas fa-heart"></i>
+</span>
+<span>${price}</span>
+`
+
+
+// Listen select input and order media
+const select = document.getElementById('select')
+select.addEventListener('change', e => {
+    const val = e.target.value
+    // Trier les media contenus dans la variable media en fonction de la valeur sélectionnée
+    media = sortMediaBy(val, media)
+    displayMedia(media)
+})
+
+// HELPER FUNCTIONS
 function mapMedia(mediaArray) {
     let medias = []
     mediaArray.forEach(media => {
@@ -92,16 +120,4 @@ function sortMediaBy(value, medias) {
     return medias
 }
 
-const select = document.getElementById('select')
-select.addEventListener('change', e => {
-    const val = e.target.value
-    // Trier les media contenus dans la variable media en fonction de la valeur sélectionnée
-    media = sortMediaBy(val, media)
-    displayMedia(media)
-})
 
-// INIT
-displayPhotographerHeader(photographer)
-let media = mapMedia(rawMedia)
-media = sortMediaBy('popularity', media)
-displayMedia(media)
