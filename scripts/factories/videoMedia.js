@@ -2,6 +2,7 @@ export default function videoMediaFactory(data) {
     let { photographerId, title, video, likes, date} = data;
 
     date = new Date(date)
+    const mediaLink = `assets/media/${video}`
 
     function getDOM(){
         const a = document.createElement( 'a' );
@@ -10,7 +11,7 @@ export default function videoMediaFactory(data) {
         const videoMedia = document.createElement( 'video' );
         videoMedia.setAttribute("controls", true)
         const source = document.createElement( 'source' );
-        source.setAttribute("src", `assets/media/${video}`)
+        source.setAttribute("src", mediaLink)
         const divMediaInfo = document.createElement( 'div' );
         divMediaInfo.setAttribute("class", "media-info")
         const h2 = document.createElement( 'h2' );
@@ -31,5 +32,5 @@ export default function videoMediaFactory(data) {
         return a;
     }
 
-    return { title, video, likes, date, getDOM };
+    return { title, mediaLink, likes, date, getDOM };
 }

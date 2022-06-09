@@ -194,23 +194,6 @@ article video
     margin-right: auto;
 }
 
-#mediaContainer {
-    width: 70%;
-    aspect-ratio: 7/6;
-    background-color: pink;
-}
-
-#curtain {
-    display: none;
-    background-color: black;
-    opacity: .6;
-    position: fixed;
-    inset: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 98;
-}
-
 #label-select{
     font-size: 18px;
     font-weight: 700;
@@ -238,4 +221,20 @@ article video
     background-color: #DB8876;
     font-size: 24px;
     color: black;
+}
+
+dialog {
+    width: 50vw;
+    aspect-ratio: 7/6;
+    border: 0;
+    padding: 2rem;
+}
+
+dialog img {
+    width: 100%;
+    aspect-ratio: 7/6;
+}
+
+dialog::backdrop {
+    background: rgba(0,0,0,.5);
 }

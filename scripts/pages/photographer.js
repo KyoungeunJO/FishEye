@@ -1,6 +1,7 @@
 import getPhotographers from "../data.js";
 import photographerFactory from "../factories/photographer.js";
 import mediaFactory from "../factories/media.js";
+import LightboxFactory from "../factories/lightbox.js";
 
 // INIT
 // get photographer's id from url
@@ -47,6 +48,13 @@ select.addEventListener('change', e => {
     displayMedia(media)
 })
 
+// Display lightbox
+let lightbox = LightboxFactory(media)
+let lightboxDOM = lightbox.getDOM()
+const body = document.querySelector('body')
+body.appendChild(lightboxDOM)
+
+
 // HELPER FUNCTIONS
 function mapMedia(mediaArray) {
     let medias = []
@@ -75,23 +83,11 @@ async function displayMedia (mediaArray) {
     });
 }
 
-function displayMediaModal() {
-    const modal = document.querySelector('#media-modal')
-    const curtain = document.querySelector('#curtain')
-
-    curtain.style.display = "block"
-    modal.style.display = "flex"
+function displayMediaModal(event) {
+    event.preventDefault()
+    console.log("display media modal")
+    lightboxDOM.showModal()
 }
-
-function closeMediaModal() {
-    const modal = document.querySelector('#media-modal')
-    modal.style.display = "none"
-}
-
-const closeBtn = document.querySelectorAll(".close-btn")
-closeBtn.forEach(btn => {
-    btn.addEventListener('click', closeMediaModal)
-})
 
 function sortMediaBy(value, medias) {
     switch (value) {

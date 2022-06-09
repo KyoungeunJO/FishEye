@@ -1,6 +1,7 @@
 export default function imageMediaFactory(data) {
     let { photographerId, title, image, likes, date} = data;
 
+    const mediaLink = `assets/media/${image}`
     date = new Date(date)
 
     function getDOM(){
@@ -8,7 +9,7 @@ export default function imageMediaFactory(data) {
         a.setAttribute("href", `#`);
         const article = document.createElement( 'article' );
         const img = document.createElement( 'img' );
-        img.setAttribute("src", `assets/media/${image}`)
+        img.setAttribute("src", mediaLink)
         const divMediaInfo = document.createElement( 'div' );
         divMediaInfo.setAttribute("class", "media-info")
         const h2 = document.createElement( 'h2' );
@@ -28,5 +29,5 @@ export default function imageMediaFactory(data) {
         return a;
     }
 
-    return { title, image, likes, date, getDOM };
+    return { title, mediaLink, likes, date, getDOM };
 }
