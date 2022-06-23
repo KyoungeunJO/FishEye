@@ -36,8 +36,8 @@ const select = document.getElementById('select')
 select.addEventListener('change', e => {
     const val = e.target.value
     // Trier les media contenus dans la variable media en fonction de la valeur sélectionnée
-    media = sortMediaBy(val, media)
-    displayMedia(media)
+    allMedia = sortMediaBy(val, allMedia)
+    displayMedia(allMedia)
 })
 
 // Display lightbox
@@ -47,6 +47,13 @@ const body = document.querySelector('body')
 body.appendChild(lightboxDOM)
 
 // Create events for lightbox
+// Close dialog when clicking on backdrop
+lightboxDOM.addEventListener('click', (event) => {
+    if (event.target.nodeName == 'DIALOG'){
+        lightboxDOM.close()
+    }
+})
+
 let rightArrow = document.querySelector('.fa-angle-right')
 rightArrow.addEventListener('click', (e) => {
     lightbox.next()
