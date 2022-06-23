@@ -13,13 +13,16 @@ export default function LightboxFactory(mediaArray) {
         currentIndex = mediaList.length - 1
     }
 
+    function setIndex(index) {
+        currentIndex = index
+    }
+
     function getDOM() {
         const dialog = document.createElement('dialog')
         const div = document.createElement('div')
         div.classList.add('dialog-content')
 
-        const img = document.createElement('img')
-        img.setAttribute('src', mediaList[currentIndex].mediaLink)
+        const mediaDOM = getMediaContentDOM()
 
         const closeBtn = document.createElement('a')
         closeBtn.setAttribute('href', '')
@@ -43,18 +46,22 @@ export default function LightboxFactory(mediaArray) {
             e.preventDefault()
         })
 
-        const h2 = document.createElement('h2')
-        h2.textContent = mediaList[currentIndex].title
-
-        div.appendChild(img)
+        div.appendChild(mediaDOM)
         div.appendChild(closeBtn)
         div.appendChild(nextBtn)
         div.appendChild(prevBtn)
-        div.appendChild(h2)
         dialog.appendChild(div)
         
         return dialog
     }
 
-    return { next, prev, getDOM }
+    function getMediaContentDOM() {
+        const mediaDOM = mediaList[currentIndex].getMediaDOM()
+        const h2 = document.createElement('h2')
+        h2.textContent = mediaList[currentIndex].title
+        mediaDOM.appendChild(h2)
+        return mediaDOM
+    }
+
+    return { next, prev, getDOM, getMediaContentDOM, setIndex }
 }

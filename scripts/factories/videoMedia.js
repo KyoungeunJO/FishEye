@@ -32,5 +32,18 @@ export default function videoMediaFactory(data) {
         return a;
     }
 
-    return { title, mediaLink, likes, date, getDOM };
+    function getMediaDOM() {
+        const div = document.createElement('div')
+        div.classList.add('media-content')
+        const videoMedia = document.createElement( 'video' );
+        videoMedia.setAttribute("controls", true)
+        const source = document.createElement( 'source' );
+        source.setAttribute("src", mediaLink)
+        videoMedia.appendChild(source)
+        div.appendChild(videoMedia)
+
+        return div
+    }
+
+    return { title, mediaLink, likes, date, getDOM, getMediaDOM };
 }

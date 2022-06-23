@@ -234,9 +234,14 @@ dialog {
     margin: 0 auto;
 }
 
+.media-content video {
+    width: 100%;
+}
+
 dialog img {
     width: 100%;
     aspect-ratio: 7/6;
+    object-fit: cover;
     box-shadow: 2px 2px 5px -2px rgba(0,0,0,0.83);
 }
 
@@ -258,6 +263,7 @@ a {
 
 .fa-times {
     position: absolute;
+    top: 5px;
     right: 18px;
     color: #901C1C;
     font-size: 42px;

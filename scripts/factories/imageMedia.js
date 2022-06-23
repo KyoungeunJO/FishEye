@@ -29,5 +29,15 @@ export default function imageMediaFactory(data) {
         return a;
     }
 
-    return { title, mediaLink, likes, date, getDOM };
+    function getMediaDOM() {
+        const div = document.createElement('div')
+        div.classList.add('media-content')
+        const img = document.createElement( 'img' );
+        img.setAttribute("src", mediaLink)
+        div.appendChild(img)
+
+        return div
+    }
+
+    return { title, mediaLink, likes, date, getDOM, getMediaDOM };
 }

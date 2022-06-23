@@ -16,7 +16,3 @@ function closeModal() {
     {once: true}
     )
 }
-
-
-// Display photographer's name
-// function modal

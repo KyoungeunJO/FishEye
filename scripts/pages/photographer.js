@@ -23,21 +23,13 @@ const rawMedia = await getPhotographers().then(data => data.media.filter(
 ))
 
 displayPhotographerHeader(photographer)
-let media = mapMedia(rawMedia)
-media = sortMediaBy('popularity', media)
-displayMedia(media)
+let allMedia = mapMedia(rawMedia)
+
+allMedia = sortMediaBy('popularity', allMedia)
+displayMedia(allMedia)
 
 // Set total likes and price in info div
-const price = `${photographer.price}€ / jour`
-const likes = media.reduce((acc, el) => acc + el.likes, 0)
-const infoPhotographerFooter = document.getElementById('info-like-price')
-infoPhotographerFooter.innerHTML = `
-<span>${likes}
-    <i class="fas fa-heart"></i>
-</span>
-<span>${price}</span>
-`
-
+updateTotalLikes()
 
 // Listen select input and order media
 const select = document.getElementById('select')
@@ -49,13 +41,45 @@ select.addEventListener('change', e => {
 })
 
 // Display lightbox
-let lightbox = LightboxFactory(media)
+let lightbox = LightboxFactory(allMedia)
 let lightboxDOM = lightbox.getDOM()
 const body = document.querySelector('body')
 body.appendChild(lightboxDOM)
 
+// Create events for lightbox
+let rightArrow = document.querySelector('.fa-angle-right')
+rightArrow.addEventListener('click', (e) => {
+    lightbox.next()
+    updateLightbox()
+})
+
+let leftArrow = document.querySelector('.fa-angle-left')
+leftArrow.addEventListener('click', (e) => {
+    lightbox.prev()
+    updateLightbox()
+})
+
 
 // HELPER FUNCTIONS
+function updateLightbox() {
+    let newMediaContent = lightbox.getMediaContentDOM()
+    let OldmediaContent = document.querySelector('.media-content')
+    let dialogContent = document.querySelector('.dialog-content')
+    dialogContent.replaceChild(newMediaContent, OldmediaContent)
+}
+
+function updateTotalLikes() {
+    const price = `${photographer.price}€ / jour`
+    const likes = allMedia.reduce((acc, el) => acc + el.likes, 0)
+    const infoPhotographerFooter = document.getElementById('info-like-price')
+    infoPhotographerFooter.innerHTML = `
+    <span>${likes}
+        <i class="fas fa-heart"></i>
+    </span>
+    <span>${price}</span>
+    `
+}
+
 function mapMedia(mediaArray) {
     let medias = []
     mediaArray.forEach(media => {
@@ -76,16 +100,32 @@ async function displayMedia (mediaArray) {
     const mediaSection = document.querySelector("#media")
     mediaSection.innerHTML = ""
     
-    mediaArray.forEach(media => {
+    mediaArray.forEach((media, index) => {
         const mediaDOM = media.getDOM()
-        mediaDOM.addEventListener('click', displayMediaModal)
+        mediaDOM.setAttribute('data-index', index)
+        mediaDOM.addEventListener('click', (event) => {
+            event.preventDefault()
+            let i = event.currentTarget.getAttribute('data-index')
+            if (event.target.nodeName != 'I') {
+                lightbox.setIndex(i)
+                updateLightbox()
+                displayMediaModal()
+            }
+            // Click on heart
+            else if (event.target.nodeName == 'I') {
+                let media = allMedia[i]
+                media.likes += 1
+                let allLikesP = document.querySelectorAll('.likes')
+                let likesP = allLikesP[i]
+                likesP.textContent = media.likes
+                updateTotalLikes()
+            }
+        })
         mediaSection.appendChild(mediaDOM)
     });
 }
 
-function displayMediaModal(event) {
-    event.preventDefault()
-    console.log("display media modal")
+function displayMediaModal() {
     lightboxDOM.showModal()
 }
 
@@ -116,5 +156,3 @@ function sortMediaBy(value, medias) {
 
     return medias
 }
-
-
