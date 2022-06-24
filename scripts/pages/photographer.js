@@ -129,16 +129,31 @@ async function displayMedia (mediaArray) {
             }
             // Click on heart
             else if (event.target.nodeName == 'I') {
-                let media = allMedia[i]
-                media.likes += 1
-                let allLikesP = document.querySelectorAll('.likes')
-                let likesP = allLikesP[i]
-                likesP.textContent = media.likes
-                updateTotalLikes()
+                likeMedia(i)
             }
         })
         mediaSection.appendChild(mediaDOM)
     });
+}
+
+// Enter on hearts
+let hearts = document.querySelectorAll('.fa-heart')
+hearts.forEach(heart => {
+    heart.addEventListener('keydown', event => {
+        if (event.key == 'Enter') {
+            const index = event.target.closest('a[data-index]').getAttribute('data-index')
+            likeMedia(index)
+        }
+    })
+})
+
+function likeMedia(index) {
+    let media = allMedia[index]
+    media.likes += 1
+    let allLikesP = document.querySelectorAll('.likes')
+    let likesP = allLikesP[index]
+    likesP.textContent = media.likes
+    updateTotalLikes()
 }
 
 function displayMediaModal() {

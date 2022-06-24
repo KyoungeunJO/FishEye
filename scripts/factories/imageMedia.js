@@ -19,6 +19,7 @@ export default function imageMediaFactory(data) {
         p.textContent = `${likes}`;
         const i = document.createElement( 'i' );
         i.setAttribute("class", "fas fa-heart");
+        i.setAttribute('tabindex', '0')
         article.appendChild(img);
         article.appendChild(divMediaInfo);
         divMediaInfo.appendChild(h2);

@@ -21,6 +21,7 @@ export default function videoMediaFactory(data) {
         p.textContent = `${likes}`;
         const i = document.createElement( 'i' );
         i.setAttribute("class", "fas fa-heart");
+        i.setAttribute('tabindex', '0')
         article.appendChild(videoMedia);
         videoMedia.appendChild(source);
         article.appendChild(divMediaInfo);
