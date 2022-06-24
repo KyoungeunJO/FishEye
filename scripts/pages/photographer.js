@@ -53,6 +53,15 @@ lightboxDOM.addEventListener('click', (event) => {
         lightboxDOM.close()
     }
 })
+lightboxDOM.addEventListener('keydown', (event) => {
+    if (event.key == "ArrowRight") {
+        lightbox.next()
+        updateLightbox()
+    } else if (event.key == 'ArrowLeft') {
+        lightbox.prev()
+        updateLightbox()
+    }
+})
 
 let rightArrow = document.querySelector('.fa-angle-right')
 rightArrow.addEventListener('click', (e) => {
