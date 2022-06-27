@@ -56,6 +56,7 @@ main {
 
 .photograph-header h1 {
     font-size: 64px;
+    max-height: 25vh;
     color: #D3573C;
 }
 
@@ -104,6 +105,7 @@ main {
 
 .modal header {
     justify-content: space-between;
+    max-height: 20vh;
     width: 100%;
 }
 
@@ -112,21 +114,23 @@ main {
 }
 
 .modal header h2 {
-    font-size: 64px;
+    font-size: 2.8rem;
+    margin: 0;
     font-weight: normal;
-    text-align: center;
+    text-align: start;
 }
 
 form {
     display: flex;
     width: 100%;
+    margin-top: 25px;
     flex-direction: column;
     align-items: flex-start;
 }
 
 form label {
     color: #312E2E;
-    font-size: 36px;
+    font-size: 1.8rem;
 }
 
 form div {
@@ -240,6 +244,7 @@ dialog {
 
 dialog img {
     width: 100%;
+    max-height: 69vh;
     aspect-ratio: 7/6;
     object-fit: cover;
     box-shadow: 2px 2px 5px -2px rgba(0,0,0,0.83);
