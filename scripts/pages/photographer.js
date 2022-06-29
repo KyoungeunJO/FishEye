@@ -89,10 +89,10 @@ function updateTotalLikes() {
     const likes = allMedia.reduce((acc, el) => acc + el.likes, 0)
     const infoPhotographerFooter = document.getElementById('info-like-price')
     infoPhotographerFooter.innerHTML = `
-    <span>${likes}
-        <i class="fas fa-heart"></i>
-    </span>
-    <span>${price}</span>
+    <div>${likes}
+        <span class="fas fa-heart"></span>
+    </div>
+    <div>${price}</div>
     `
 }
 
@@ -122,13 +122,13 @@ async function displayMedia (mediaArray) {
         mediaDOM.addEventListener('click', (event) => {
             event.preventDefault()
             let i = event.currentTarget.getAttribute('data-index')
-            if (event.target.nodeName != 'I') {
+            if (event.target.nodeName != 'SPAN') {
                 lightbox.setIndex(i)
                 updateLightbox()
                 displayMediaModal()
             }
             // Click on heart
-            else if (event.target.nodeName == 'I') {
+            else if (event.target.nodeName == 'SPAN') {
                 likeMedia(i)
             }
         })

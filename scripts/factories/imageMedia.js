@@ -10,6 +10,7 @@ export default function imageMediaFactory(data) {
         const article = document.createElement( 'article' );
         const img = document.createElement( 'img' );
         img.setAttribute("src", mediaLink)
+        img.setAttribute("alt", `${title}`)
         const divMediaInfo = document.createElement( 'div' );
         divMediaInfo.setAttribute("class", "media-info")
         const h2 = document.createElement( 'h2' );
@@ -17,7 +18,7 @@ export default function imageMediaFactory(data) {
         const p = document.createElement( 'p' );
         p.setAttribute("class", "likes");
         p.textContent = `${likes}`;
-        const i = document.createElement( 'i' );
+        const i = document.createElement( 'span' );
         i.setAttribute("class", "fas fa-heart");
         i.setAttribute('tabindex', '0')
         i.setAttribute('aria-label', 'likes')
@@ -36,6 +37,7 @@ export default function imageMediaFactory(data) {
         div.classList.add('media-content')
         const img = document.createElement( 'img' );
         img.setAttribute("src", mediaLink)
+        img.setAttribute("alt", `${title}`)
         div.appendChild(img)
 
         return div

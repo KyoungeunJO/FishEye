@@ -19,7 +19,7 @@ export default function videoMediaFactory(data) {
         const p = document.createElement( 'p' );
         p.setAttribute("class", "likes");
         p.textContent = `${likes}`;
-        const i = document.createElement( 'i' );
+        const i = document.createElement( 'span' );
         i.setAttribute("class", "fas fa-heart");
         i.setAttribute('tabindex', '0')
         i.setAttribute('aria-label', 'likes')
