@@ -22,6 +22,7 @@ export default function videoMediaFactory(data) {
         const i = document.createElement( 'i' );
         i.setAttribute("class", "fas fa-heart");
         i.setAttribute('tabindex', '0')
+        i.setAttribute('aria-label', 'likes')
         article.appendChild(videoMedia);
         videoMedia.appendChild(source);
         article.appendChild(divMediaInfo);

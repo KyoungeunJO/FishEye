@@ -20,6 +20,7 @@ export default function imageMediaFactory(data) {
         const i = document.createElement( 'i' );
         i.setAttribute("class", "fas fa-heart");
         i.setAttribute('tabindex', '0')
+        i.setAttribute('aria-label', 'likes')
         article.appendChild(img);
         article.appendChild(divMediaInfo);
         divMediaInfo.appendChild(h2);

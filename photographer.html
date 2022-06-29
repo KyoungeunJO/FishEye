@@ -12,19 +12,19 @@
     <div id="curtain"></div>
     <header>
       <a href="./index.html">
-        <img src="assets/images/logo.png" alt="logo FishEye" class="logo" />
+        <img src="assets/images/logo.png" alt="Fisheye Home Page" class="logo" />
       </a>
     </header>
     <main id="main">
     </main>
-    <div id="contact_modal">
+    <div id="contact_modal" role="Button" aria-label="Contact Me">
 			<div class="modal">
 				<header>
           <div class="modal-title">
             <h2>Contactez-moi</h2>
             <h2 id="title"></h2>
           </div>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img src="assets/icons/close.svg" role="button" aria-describedby="Close Contact form" onclick="closeModal()" />
         </header>
 				<form>
 					<div>
@@ -37,6 +37,7 @@
             required
             minlength="2"
             value=""
+            aria-labelledby="First name"
             />
 					</div>
           <div>
@@ -48,6 +49,7 @@
               name="last"
               required
               minlength="2"
+              aria-labelledby="Last name"
              />
             </div>
             <div>
@@ -58,6 +60,7 @@
                 name="email"
                 required
                 type="email"
+                aria-labelledby="Email"
               />
             </div>
             <div>
@@ -69,9 +72,10 @@
                 name="message"
                 required
                 minlength="3"
+                aria-labelledby="Your message"
               />
             </div>
-          <button class="contact_button">Envoyer</button>
+          <button class="contact_button" role="Button" aria-label="Send">Envoyer</button>
 				</form>
 			</div>
 		</div>

@@ -19,12 +19,15 @@ export default function LightboxFactory(mediaArray) {
 
     function getDOM() {
         const dialog = document.createElement('dialog')
+        dialog.setAttribute('aria-label', 'image close up view')
         const div = document.createElement('div')
         div.classList.add('dialog-content')
 
         const mediaDOM = getMediaContentDOM()
 
         const closeBtn = document.createElement('a')
+        closeBtn.setAttribute('role', 'button')
+        closeBtn.setAttribute('aria-label', 'Close dialog')
         closeBtn.setAttribute('href', '')
         closeBtn.classList.add('fas', 'fa-times')
         closeBtn.addEventListener("click", (e) => {
@@ -35,6 +38,8 @@ export default function LightboxFactory(mediaArray) {
         const prevBtn = document.createElement('a')
         prevBtn.classList.add('fas', 'fa-angle-left')
         prevBtn.setAttribute('href', '')
+        prevBtn.setAttribute('role', 'Link')
+        prevBtn.setAttribute('aria-label', 'Previous image')
         prevBtn.addEventListener('click', (e) => {
             e.preventDefault()
         })
@@ -42,6 +47,8 @@ export default function LightboxFactory(mediaArray) {
         const nextBtn = document.createElement('a')
         nextBtn.classList.add('fas', 'fa-angle-right')
         nextBtn.setAttribute('href', '')
+        nextBtn.setAttribute('role', 'Link')
+        nextBtn.setAttribute('aria-label','Next image')
         nextBtn.addEventListener('click', (e) => {
             e.preventDefault()
         })
