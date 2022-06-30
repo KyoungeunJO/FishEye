@@ -22,7 +22,7 @@ export default function photographerFactory(data) {
         p3.setAttribute("class", "price");
         p3.textContent = `${price}€/jour`;
         a.appendChild(article);
-        a.appendChild(img);
+        article.appendChild(img);
         article.appendChild(h2);
         article.appendChild(p);
         article.appendChild(p2);
