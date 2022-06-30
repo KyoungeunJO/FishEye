@@ -38,7 +38,7 @@ export default function LightboxFactory(mediaArray) {
         const prevBtn = document.createElement('a')
         prevBtn.classList.add('fas', 'fa-angle-left')
         prevBtn.setAttribute('href', '')
-        prevBtn.setAttribute('role', 'Link')
+        prevBtn.setAttribute('role', 'link')
         prevBtn.setAttribute('aria-label', 'Previous image')
         prevBtn.addEventListener('click', (e) => {
             e.preventDefault()
@@ -47,7 +47,7 @@ export default function LightboxFactory(mediaArray) {
         const nextBtn = document.createElement('a')
         nextBtn.classList.add('fas', 'fa-angle-right')
         nextBtn.setAttribute('href', '')
-        nextBtn.setAttribute('role', 'Link')
+        nextBtn.setAttribute('role', 'link')
         nextBtn.setAttribute('aria-label','Next image')
         nextBtn.addEventListener('click', (e) => {
             e.preventDefault()

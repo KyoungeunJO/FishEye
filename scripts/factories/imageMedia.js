@@ -5,9 +5,9 @@ export default function imageMediaFactory(data) {
     date = new Date(date)
 
     function getDOM(){
+        const article = document.createElement( 'article' );
         const a = document.createElement( 'a' );
         a.setAttribute("href", `#`);
-        const article = document.createElement( 'article' );
         const img = document.createElement( 'img' );
         img.setAttribute("src", mediaLink)
         img.setAttribute("alt", `${title}`)
@@ -22,14 +22,14 @@ export default function imageMediaFactory(data) {
         i.setAttribute("class", "fas fa-heart");
         i.setAttribute('tabindex', '0')
         i.setAttribute('aria-label', 'likes')
-        article.appendChild(img);
+        article.appendChild(a);
+        a.appendChild(img);
         article.appendChild(divMediaInfo);
         divMediaInfo.appendChild(h2);
         divMediaInfo.appendChild(p);
         divMediaInfo.appendChild(i);
-        a.appendChild(article);
         
-        return a;
+        return article;
     }
 
     function getMediaDOM() {

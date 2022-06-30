@@ -9,7 +9,7 @@ export default function videoMediaFactory(data) {
         a.setAttribute("href", `#`);
         const article = document.createElement( 'article' );
         const videoMedia = document.createElement( 'video' );
-        videoMedia.setAttribute("controls", true)
+        videoMedia.setAttribute("controls", "")
         const source = document.createElement( 'source' );
         source.setAttribute("src", mediaLink)
         const divMediaInfo = document.createElement( 'div' );
@@ -23,15 +23,15 @@ export default function videoMediaFactory(data) {
         i.setAttribute("class", "fas fa-heart");
         i.setAttribute('tabindex', '0')
         i.setAttribute('aria-label', 'likes')
-        article.appendChild(videoMedia);
+        article.appendChild(a)
+        a.appendChild(videoMedia);
         videoMedia.appendChild(source);
         article.appendChild(divMediaInfo);
         divMediaInfo.appendChild(h2);
         divMediaInfo.appendChild(p);
         divMediaInfo.appendChild(i);
-        a.appendChild(article);
         
-        return a;
+        return article;
     }
 
     function getMediaDOM() {
