@@ -13,14 +13,14 @@ const photographer = await getPhotographers().then(data => data.photographers.fi
     photographer => {
         return id === photographer.id;
     }
-)[0])
+)[0]);
 
 // Get photographer's media
 const rawMedia = await getPhotographers().then(data => data.media.filter(
     media => {
         return media.photographerId === photographer.id;
     }
-))
+));
 
 displayPhotographerHeader(photographer)
 let allMedia = mapMedia(rawMedia)

@@ -160,6 +160,7 @@ form input {
     gap: 30px;
     grid-template-columns: 1fr 1fr 1fr;
     width: 100%;
+    margin-bottom: 70px;
 }
 
 #media a {
@@ -288,4 +289,8 @@ a {
     top: 45%;
     color: #901C1C;
     font-size: 42px;
+}
+
+.fa-heart {
+    cursor: pointer;
 }
