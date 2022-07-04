@@ -141,7 +141,8 @@ let hearts = document.querySelectorAll('.fa-heart')
 hearts.forEach(heart => {
     heart.addEventListener('keydown', event => {
         if (event.key == 'Enter') {
-            const index = event.target.closest('a[data-index]').getAttribute('data-index')
+            const index = event.target.parentNode.parentNode.getAttribute('data-index')
+            console.log(index);
             likeMedia(index)
         }
     })
