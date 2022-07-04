@@ -112,7 +112,7 @@ async function displayPhotographerHeader(photographer) {
     photographerSection.appendChild(photographerHeaderDOM)
 }
 
-async function displayMedia (mediaArray) {
+async function displayMedia(mediaArray) {
     const mediaSection = document.querySelector("#media")
     mediaSection.innerHTML = ""
     
@@ -134,19 +134,22 @@ async function displayMedia (mediaArray) {
         })
         mediaSection.appendChild(mediaDOM)
     });
+    handleHeartKeypress()
 }
 
 // Enter on hearts
-let hearts = document.querySelectorAll('.fa-heart')
-hearts.forEach(heart => {
-    heart.addEventListener('keydown', event => {
-        if (event.key == 'Enter') {
-            const index = event.target.parentNode.parentNode.getAttribute('data-index')
-            console.log(index);
-            likeMedia(index)
-        }
+function handleHeartKeypress() {
+    let hearts = document.querySelectorAll('.fa-heart')
+    hearts.forEach(heart => {
+        heart.addEventListener('keydown', event => {
+            if (event.key == 'Enter') {
+                const index = event.target.parentNode.parentNode.getAttribute('data-index')
+                console.log(index);
+                likeMedia(index)
+            }
+        })
     })
-})
+}
 
 function likeMedia(index) {
     let media = allMedia[index]
