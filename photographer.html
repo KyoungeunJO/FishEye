@@ -22,7 +22,7 @@
 				<header>
           <div class="modal-title">
             <h2>Contactez-moi</h2>
-            <h2 id="title"></h2>
+            <h2 id="title">Nom photographe</h2>
           </div>
           <img src="assets/icons/close.svg" role="button" alt="Close Contact form" onclick="closeModal()" />
         </header>
@@ -37,6 +37,7 @@
             required
             minlength="2"
             value=""
+            pattern="[a-zA-Z]+"
             />
 					</div>
           <div>
@@ -48,6 +49,7 @@
               name="last"
               required
               minlength="2"
+              pattern="[a-zA-Z]+"
              />
             </div>
             <div>
@@ -58,6 +60,7 @@
                 name="email"
                 required
                 type="email"
+                pattern=" /^[\w\.]+@([\w-]+\.)+[\w-]{2,4}$/"
               />
             </div>
             <div>
